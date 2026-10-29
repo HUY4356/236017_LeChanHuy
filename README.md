@@ -6,46 +6,19 @@
 - **Backend:** Node.js, Express, Mongoose
 - **Database:** MongoDB Atlas
 
-## Chạy backend bằng Docker
+## Hướng dẫn chạy Backend bằng Docker
+1. Kéo image từ Docker Hub:
+   `docker pull huy4356/backend-food-app`
+2. Tạo file `.env` chứa các biến môi trường cần thiết (ví dụ: `MONGO_URI`, `PORT=5000`).
+3. Chạy container:
+   `docker run -d -p 5000:5000 --env-file .env --name backend-container huy4356/backend-food-app`
 
-Từ thư mục `backend`, tạo file `.env` với chuỗi kết nối MongoDB rồi chạy:
+## Hướng dẫn chạy Frontend bằng Docker
+1. Kéo image từ Docker Hub:
+   `docker pull huy4356/frontend-food-app`
+2. Chạy container frontend ở cổng 8080:
+   `docker run -d -p 8080:80 --name frontend-container huy4356/frontend-food-app`
+3. Truy cập ứng dụng tại: `http://localhost:8080` (Lưu ý: Cần chạy kèm container Backend ở cổng 5000 để API hoạt động).
 
-```powershell
-docker pull huy4356/backend:latest
-docker run -d --name backend-container -p 5000:5000 --env-file .env huy4356/backend:latest
-```
-
-Backend sẽ phục vụ tại `http://localhost:5000`.
-
-## Đóng gói và chạy frontend bằng Docker
-
-Frontend sử dụng `VITE_API_URL` tại thời điểm build. Khi chạy local cùng backend:
-
-```powershell
-cd frontend
-docker build --build-arg VITE_API_URL=http://localhost:5000/api -t huy4356/frontend:latest .
-docker run -d --name frontend-container -p 8080:80 huy4356/frontend:latest
-```
-
-Mở giao diện tại `http://localhost:8080`.
-
-Khi triển khai backend ở địa chỉ khác, truyền URL backend lúc build, ví dụ:
-
-```powershell
-docker build --build-arg VITE_API_URL=https://your-backend.example.com/api -t huy4356/frontend:latest .
-```
-
-Dockerfile đã chuyển build argument này thành biến môi trường để Vite nhúng đúng URL vào bundle.
-
-## Đẩy frontend image lên Docker Hub
-
-```powershell
-docker login
-docker push huy4356/frontend:latest
-```
-
-Image frontend dùng để nộp bài:
-
-```text
-huy4356/frontend:latest
-```
+## Triển khai (Deployment)
+- **Frontend URL (Render):** `https://two36017-lechanhuy.onrender.com/`
