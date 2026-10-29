@@ -15,7 +15,9 @@ app.use(express.json()); // Phân tích JSON body
 // ==========================================
 // 1. Kết nối MongoDB Atlas
 // ==========================================
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI, {
+  dbName: '236017_LeChanHuy'
+})
   .then(() => console.log('✅ Kết nối MongoDB Atlas thành công!'))
   .catch((err) => {
     console.error('❌ Lỗi kết nối MongoDB:', err.message);
