@@ -22,3 +22,4 @@
 
 ## Triển khai (Deployment)
 - **Frontend URL (Render):** `https://two36017-lechanhuy.onrender.com/`
+- **Backend API URL (Render):** `https://two36017-lechanhuy-1.onrender.com/api/foods`
