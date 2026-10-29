@@ -11,17 +11,10 @@
 - Containerization: Docker, Docker Hub
 - Cloud Deployment: Render
 
-## 2. Thông tin triển khai (Deployment Links)
-- **GitHub Repository**: https://github.com/2212345nguyenvanan/2212345_NguyenVanAn
-- **Docker Backend Image**: https://hub.docker.com/r/2212345nguyenvanan/backend
-- **Docker Frontend Image**: https://hub.docker.com/r/2212345nguyenvanan/frontend
-- **Render Backend API**: https://api-2212345.onrender.com
-- **Render Frontend App**: https://web-2212345.onrender.com
-- **MongoDB Atlas Database**: 2212345_NguyenVanAn
+## Hướng dẫn chạy Backend bằng Docker
+1. Kéo image từ Docker Hub:
+   `docker pull huy4356/backend-food-app`
+2. Tạo file `.env` chứa các biến môi trường cần thiết (ví dụ: `MONGO_URI`, `PORT=5000`).
+3. Chạy container:
+   `docker run -d -p 5000:5000 --env-file .env --name backend-container huy4356/backend-food-app`
 
-## 3. Hướng dẫn chạy cục bộ (Local Setup)
-### Backend
-```bash
-cd backend
-npm install
-npm start
